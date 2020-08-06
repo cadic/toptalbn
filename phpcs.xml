@@ -17,5 +17,8 @@
     <!-- Include the WordPress-Extra standard. -->
     <rule ref="WordPress"/>
 
+    <!-- Exclude our generated php\json files of acf fields definitions. -->
+    <exclude-pattern>*acf-fields.php</exclude-pattern>
+
     <config name="minimum_supported_wp_version" value="4.9"/>
 </ruleset>

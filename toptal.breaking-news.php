@@ -62,6 +62,28 @@ function toptalbn_scripts() {
 		TOPTALBN_PLUGIN_VERSION
 	);
 }
+add_action( 'enqueue_scripts', 'toptalbn_scripts' );
+
+/**
+ * Admin scripts
+ *
+ * @return void
+ */
+function toptalbn_add_color_picker() {
+
+	if ( is_admin() ) {
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script(
+			'toptalbn-admin',
+			TOPTALBN_PLUGIN_URL . '/assets/admin.js',
+			array( 'wp-color-picker' ),
+			TOPTALBN_PLUGIN_VERSION,
+			true
+		);
+	}
+}
+add_action( 'admin_enqueue_scripts', 'toptalbn_add_color_picker' );
+
 
 /**
  * Output Breaking News to the page footer. Will be moved to page header with jQuery.
