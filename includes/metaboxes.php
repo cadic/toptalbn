@@ -80,7 +80,7 @@ function toptalbn_render_metabox( $post = null ) {
 							type="text"
 							name="toptalbn_expire_at"
 							id="toptalbn_expire_at"
-							value="<?php echo esc_attr( $toptal_expire_at ); ?>" />
+							value="<?php echo esc_attr( $toptalbn_expire_at ); ?>" />
 					</span>
 				</td>
 			</tr>
