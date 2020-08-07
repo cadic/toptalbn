@@ -57,13 +57,22 @@ function toptalbn_scripts() {
 	);
 
 	wp_enqueue_style(
-		'toptal',
+		'toptalbn',
 		TOPTALBN_PLUGIN_URL . '/assets/style.css',
 		array(),
 		TOPTALBN_PLUGIN_VERSION
 	);
+
+	$options = toptalbn_options();
+
+	$custom_css = "#toptalbn {
+		color: {$options['color']};
+		background: {$options['background_color']};
+	}";
+
+	wp_add_inline_style( 'toptalbn', $custom_css );
 }
-add_action( 'enqueue_scripts', 'toptalbn_scripts' );
+add_action( 'wp_enqueue_scripts', 'toptalbn_scripts' );
 
 /**
  * Admin scripts
@@ -108,10 +117,6 @@ add_action( 'admin_enqueue_scripts', 'toptalbn_admin_scripts' );
  * @return void
  */
 function toptalbn_display_breaking_news() {
-	add_action(
-		'wp_footer',
-		function() {
-			echo do_shortcode( '[toptal_breaking_news]' );
-		}
-	);
+	echo do_shortcode( '[toptal_breaking_news]' );
 }
+add_action( 'wp_footer', 'toptalbn_display_breaking_news' );
