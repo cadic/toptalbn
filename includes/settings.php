@@ -194,5 +194,18 @@ function toptalbn_background_color_callback() {
  * @return void
  */
 function toptalbn_current_callback() {
-	echo 'PRINT CURRENT';
+	$breaking_news = toptalbn_get_breaking_news();
+
+	if ( $breaking_news ) {
+		?>
+		<p>
+			<a href="<?php echo esc_url( $breaking_news['url'] ); ?>"><?php echo esc_html( $breaking_news['title'] ); ?></a>
+			<?php edit_post_link( __( '(edit)', 'toptalbn' ), '', '', $breaking_news['ID'] ); ?>
+		</p>
+		<?php
+	} else {
+		?>
+		<p><?php esc_html_e( 'No Breaking News to display', 'toptalbn' ); ?> <a href="edit.php"></a></p>
+		<?php
+	}
 }

@@ -20,17 +20,17 @@ The plugin options page must include the following configurable items:
 [x] a text input field for the title of the breaking news area (e.g. “BREAKING NEWS:”)
 [x] a color picker for the background color
 [x] a color picker for the text color
-[ ] a display of the active breaking news post title and a link to edit that post
+[x] a display of the active breaking news post title and a link to edit that post
 
 In the post editor, add a metabox with the following fields:
-[ ] A checkbox with the legend “Make this post breaking news” that activates this post as “breaking news” when checked
-[ ] A text field containing a custom title that will be shown instead of the post title (if empty, display the post title)
-[ ] A checkbox to set an expiration date and time. If checked, add an option to select the date and time. When the required time expires, the post should not be marked as “breaking news” anymore.
+[x] A checkbox with the legend “Make this post breaking news” that activates this post as “breaking news” when checked
+[x] A text field containing a custom title that will be shown instead of the post title (if empty, display the post title)
+[x] A checkbox to set an expiration date and time. If checked, add an option to select the date and time. When the required time expires, the post should not be marked as “breaking news” anymore.
 
 Front-end instructions:
-[ ] If there is a post set as “breaking news,” display a full width div at the bottom of the site’s header with this format:
+[x] If there is a post set as “breaking news,” display a full width div at the bottom of the site’s header with this format:
 	[Breaking news title from backend]: [post title \| custom title]
-[ ] There can be only one active breaking news post at a time, which should be the post that was activated last.
+[x] There can be only one active breaking news post at a time, which should be the post that was activated last.
 */
 
 define( 'TOPTALBN_PLUGIN_DIR', dirname( __FILE__ ) );
