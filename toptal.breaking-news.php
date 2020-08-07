@@ -37,6 +37,7 @@ define( 'TOPTALBN_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'TOPTALBN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'TOPTALBN_PLUGIN_VERSION', '1.0' );
 
+require_once TOPTALBN_PLUGIN_DIR . '/includes/core.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/settings.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/metaboxes.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/shortcodes.php';
