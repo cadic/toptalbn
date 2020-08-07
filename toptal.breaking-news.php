@@ -17,9 +17,9 @@ Anything that is a “breaking news” story has to be visible on every page and
 The displayed “breaking news” item also needs to have a link to the actual post.
 
 The plugin options page must include the following configurable items:
-[ ] a text input field for the title of the breaking news area (e.g. “BREAKING NEWS:”)
-[ ] a color picker for the background color
-[ ] a color picker for the text color
+[x] a text input field for the title of the breaking news area (e.g. “BREAKING NEWS:”)
+[x] a color picker for the background color
+[x] a color picker for the text color
 [ ] a display of the active breaking news post title and a link to edit that post
 
 In the post editor, add a metabox with the following fields:
@@ -69,20 +69,36 @@ add_action( 'enqueue_scripts', 'toptalbn_scripts' );
  *
  * @return void
  */
-function toptalbn_add_color_picker() {
+function toptalbn_admin_scripts() {
 
 	if ( is_admin() ) {
 		wp_enqueue_style( 'wp-color-picker' );
+
+		wp_enqueue_style(
+			'toptalbn-datetimepicker',
+			TOPTALBN_PLUGIN_URL . '/assets/vendor/jquery.datetimepicker.css',
+			array(),
+			TOPTALBN_PLUGIN_VERSION
+		);
+
+		wp_enqueue_script(
+			'toptalbn-datetimepicker',
+			TOPTALBN_PLUGIN_URL . '/assets/vendor/jquery.datetimepicker.js',
+			array( 'jquery' ),
+			TOPTALBN_PLUGIN_VERSION,
+			true
+		);
+
 		wp_enqueue_script(
 			'toptalbn-admin',
 			TOPTALBN_PLUGIN_URL . '/assets/admin.js',
-			array( 'wp-color-picker' ),
+			array( 'wp-color-picker', 'toptalbn-datetimepicker' ),
 			TOPTALBN_PLUGIN_VERSION,
 			true
 		);
 	}
 }
-add_action( 'admin_enqueue_scripts', 'toptalbn_add_color_picker' );
+add_action( 'admin_enqueue_scripts', 'toptalbn_admin_scripts' );
 
 
 /**
