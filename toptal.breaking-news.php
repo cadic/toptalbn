@@ -41,6 +41,19 @@ require_once TOPTALBN_PLUGIN_DIR . '/includes/core.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/settings.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/metaboxes.php';
 require_once TOPTALBN_PLUGIN_DIR . '/includes/shortcodes.php';
+require_once TOPTALBN_PLUGIN_DIR . '/includes/cron.php';
+
+/**
+ * Create cron job to disable expired breaking news
+ *
+ * @return void
+ */
+function toptalbn_register_cron_jobs() {
+	if ( ! wp_next_scheduled( 'toptalbn_cron' ) ) {
+		wp_schedule_event( time(), 'hourly', 'toptalbn_cron' );
+	}
+}
+register_activation_hook( __FILE__, 'toptalbn_register_cron_jobs' );
 
 /**
  * Plugin scripts and styles
