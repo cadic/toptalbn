@@ -112,6 +112,14 @@ function toptalbn_options_init() {
 		'toptalbn_setting_section'
 	);
 
+	add_settings_field(
+		'selector',
+		__( 'Selector', 'toptalbn' ),
+		'toptalbn_selector_callback',
+		'breaking-news-admin',
+		'toptalbn_setting_section'
+	);
+
 }
 add_action( 'admin_init', 'toptalbn_options_init' );
 
@@ -133,6 +141,10 @@ function toptalbn_sanitize( $input ) {
 
 	if ( isset( $input['background_color'] ) ) {
 		$sanitary_values['background_color'] = sanitize_hex_color( $input['background_color'] );
+	}
+
+	if ( isset( $input['selector'] ) ) {
+		$sanitary_values['selector'] = sanitize_text_field( $input['selector'] );
 	}
 
 	return $sanitary_values;
@@ -208,4 +220,24 @@ function toptalbn_current_callback() {
 		<p><?php esc_html_e( 'No Breaking News to display', 'toptalbn' ); ?> <a href="edit.php"></a></p>
 		<?php
 	}
+}
+
+/**
+ * Custom selector to search correct header DOM object
+ *
+ * @return void
+ */
+function toptalbn_selector_callback() {
+	$toptalbn_options = get_option( 'toptalbn_options' );
+
+	printf(
+		'<input class="regular-text" type="text" name="toptalbn_options[selector]" id="selector" value="%s">',
+		isset( $toptalbn_options['selector'] ) ? esc_attr( $toptalbn_options['selector'] ) : ''
+	);
+
+	printf(
+		'<p class="description">%s</p>',
+		esc_html__( 'You can specify custom jQuery selector for your theme header if plugin is unable to detect your header element.', 'toptalbn' )
+	);
+
 }

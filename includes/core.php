@@ -78,5 +78,10 @@ function toptalbn_get_breaking_news() {
 		);
 	}
 
+	if ( false === $result ) {
+		// Force cleanup cron job.
+		do_action( 'toptalbn_cron' );
+	}
+
 	return $result;
 }

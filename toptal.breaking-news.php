@@ -31,6 +31,9 @@ Front-end instructions:
 [x] If there is a post set as “breaking news,” display a full width div at the bottom of the site’s header with this format:
 	[Breaking news title from backend]: [post title \| custom title]
 [x] There can be only one active breaking news post at a time, which should be the post that was activated last.
+
+Extra features:
+[x] Add setting to specify custom selector for themes.
 */
 
 define( 'TOPTALBN_PLUGIN_DIR', dirname( __FILE__ ) );
@@ -61,13 +64,18 @@ register_activation_hook( __FILE__, 'toptalbn_register_cron_jobs' );
  * @return void
  */
 function toptalbn_scripts() {
-	wp_enqueue_script(
+	wp_register_script(
 		'toptalbn',
 		TOPTALBN_PLUGIN_URL . '/assets/app.js',
 		array( 'jquery' ),
 		TOPTALBN_PLUGIN_VERSION,
 		true
 	);
+
+	$options = toptalbn_options();
+	wp_localize_script( 'toptalbn', 'TOPTALBN', $options );
+
+	wp_enqueue_script( 'toptalbn' );
 
 	wp_enqueue_style(
 		'toptalbn',
