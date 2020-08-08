@@ -113,9 +113,17 @@ function toptalbn_admin_scripts() {
 		);
 
 		wp_enqueue_script(
+			'toptalbn-moment',
+			TOPTALBN_PLUGIN_URL . '/assets/vendor/moment.js',
+			array(),
+			TOPTALBN_PLUGIN_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
 			'toptalbn-datetimepicker',
 			TOPTALBN_PLUGIN_URL . '/assets/vendor/jquery.datetimepicker.js',
-			array( 'jquery' ),
+			array( 'jquery', 'toptalbn-moment' ),
 			TOPTALBN_PLUGIN_VERSION,
 			true
 		);

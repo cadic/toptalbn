@@ -4,11 +4,15 @@
 
 	// Add datepicker to expire field
 	$.datetimepicker.setLocale('en');
-	$.datetimepicker.setDateFormatter('moment');
-	$('#toptalbn_expire_at').datetimepicker();
+	if ( 'undefined' !== typeof moment ) {
+		$.datetimepicker.setDateFormatter('moment');
+	}
 
-	$('#toptalbn_expire').on( 'change', function( event ) {
+	$('#toptalbn_expire_at').datetimepicker({});
+
+	$('#toptalbn_expire').on( 'change', function() {
 		const checked = $(this).is(':checked');
 		$('#toptalbn_expire_at_field').toggle( checked );
 	} );
+
 } )( jQuery );
