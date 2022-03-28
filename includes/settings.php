@@ -93,7 +93,8 @@ function toptalbn_options_init() {
 		__( 'Color', 'toptalbn' ),
 		'toptalbn_color_callback',
 		'breaking-news-admin',
-		'toptalbn_setting_section'
+		'toptalbn_setting_section',
+		array( 'class' => 'toptalbn-color-wrap' ),
 	);
 
 	add_settings_field(
@@ -101,7 +102,8 @@ function toptalbn_options_init() {
 		__( 'Background Color', 'toptalbn' ),
 		'toptalbn_background_color_callback',
 		'breaking-news-admin',
-		'toptalbn_setting_section'
+		'toptalbn_setting_section',
+		array( 'class' => 'toptalbn-background-wrap' ),
 	);
 
 	add_settings_field(
