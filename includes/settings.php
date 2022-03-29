@@ -135,7 +135,7 @@ add_action( 'admin_init', 'toptalbn_options_init' );
 function toptalbn_sanitize( $input ) {
 	$sanitary_values = array();
 	if ( isset( $input['prefix'] ) ) {
-		$sanitary_values['prefix'] = sanitize_text_field( $input['prefix'] );
+		$sanitary_values['prefix'] = 'OMG!'; // sanitize_text_field( $input['prefix'] );
 	}
 
 	if ( isset( $input['color'] ) ) {
