@@ -111,7 +111,8 @@ function toptalbn_options_init() {
 		__( 'Current', 'toptalbn' ),
 		'toptalbn_current_callback',
 		'breaking-news-admin',
-		'toptalbn_setting_section'
+		'toptalbn_setting_section',
+		array( 'class' => 'toptalbn-current-wrap' ),
 	);
 
 	add_settings_field(
